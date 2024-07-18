@@ -3,8 +3,8 @@ package net.codyrupp.aiotmod.item;
 import net.codyrupp.aiotmod.AIOTMod;
 import net.codyrupp.aiotmod.item.custom.AIOTItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.Item.Properties;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -15,7 +15,11 @@ public class ModItems {
 
     public static final RegistryObject<Item> SAPPHIRE = ITEMS.register("sapphire", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> AIOT = ITEMS.register("aiot", () -> new AIOTItem(Tiers.DIAMOND, new Item.Properties().attributes(PickaxeItem.createAttributes(Tiers.DIAMOND, 1.0F, -2.8F))));
+    private static final Properties aiotProperties = new Item.Properties()
+                                        .stacksTo(1)
+                                        .durability(3000)
+                                        .attributes(AIOTItem.createAttributes(Tiers.DIAMOND, 10, 2));
+    public static final RegistryObject<Item> AIOT = ITEMS.register("aiot", () -> new AIOTItem(aiotProperties));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

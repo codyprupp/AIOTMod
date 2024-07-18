@@ -1,6 +1,6 @@
 package net.codyrupp.aiotmod;
 
-import com.mojang.logging.LogUtils;
+// import com.mojang.logging.LogUtils;
 
 import net.codyrupp.aiotmod.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -49,9 +49,7 @@ public class AIOTMod
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.SAPPHIRE);
-        } else if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.AIOT);
         }
     }

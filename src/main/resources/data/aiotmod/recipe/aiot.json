@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "category": "equipment",
+    "ingredients": [
+        {
+            "item": "minecraft:netherite_axe"
+        },
+        {
+            "item": "minecraft:netherite_hoe"
+        },
+        {
+            "item": "minecraft:netherite_pickaxe"
+        },
+        {
+            "item": "minecraft:netherite_shovel"
+        },
+        {
+            "item": "minecraft:netherite_sword"
+        }
+    ],
+    "result":
+    {
+        "count": 1,
+        "id": "aiotmod:aiot"
+    }
+}

@@ -1,0 +1,60 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_netherite_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_axe_recipe": {
+      "conditions": {
+        "recipe": "minecraft:netherite_axe_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_hoe_recipe": {
+      "conditions": {
+        "recipe": "minecraft:netherite_hoe_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_pickaxe_recipe": {
+      "conditions": {
+        "recipe": "minecraft:netherite_hoe_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_shovel_recipe": {
+      "conditions": {
+          "recipe": "minecraft:netherite_shovel_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_sword_recipe": {
+      "conditions": {
+          "recipe": "minecraft:netherite_sword_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_axe_recipe",
+      "has_hoe_recipe",
+      "has_pickaxe_recipe",
+      "has_shovel_recipe",
+      "has_sword_recipe",
+      "has_netherite_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "aiotmod:aiot"
+    ]
+  }
+}

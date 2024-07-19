@@ -16,7 +16,7 @@ public class ModItems {
     private static final Properties aiotProperties = new Item.Properties()
                                         .stacksTo(1)
                                         .durability(4000)
-                                        .attributes(AIOTItem.createAttributes(Tiers.NETHERITE, 10, 2));
+                                        .attributes(AIOTItem.createAttributes(Tiers.NETHERITE, 10, 1.6F));
     public static final RegistryObject<Item> AIOT = ITEMS.register("aiot", () -> new AIOTItem(aiotProperties));
 
     public static void register(IEventBus eventBus) {

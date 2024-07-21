@@ -10,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.block.Block;
@@ -34,6 +35,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -45,7 +47,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import java.util.function.Predicate;
 import java.util.List;
 
-public class AIOTItem extends Item {
+public class AIOTItem extends Item{
 
     protected static final Map<Block, Block> STRIPPABLES = new Builder<Block, Block>()
         .put(Blocks.OAK_WOOD, Blocks.STRIPPED_OAK_WOOD)
@@ -73,10 +75,11 @@ public class AIOTItem extends Item {
 
     public AIOTItem(Properties pProperties) {
         super(pProperties.component(DataComponents.TOOL, createToolProperties()));
+        // super(Tiers.NETHERITE, BlockTags.NEEDS_DIAMOND_TOOL, pProperties.component(DataComponents.TOOL, createToolProperties()));
     }
 
     private static Tool createToolProperties() {
-        return new Tool(List.of(Tool.Rule.minesAndDrops(List.of(Blocks.COBWEB), 15.0F), Tool.Rule.overrideSpeed(BlockTags.SWORD_EFFICIENT, 2.0F)), 8.0F, 10);
+        return new Tool(List.of(Tool.Rule.minesAndDrops(List.of(Blocks.COBWEB), 15.0F), Tool.Rule.overrideSpeed(BlockTags.SWORD_EFFICIENT, 2.0F)), 8.0F, 1);
     }
 
     /**
@@ -109,7 +112,7 @@ public class AIOTItem extends Item {
     @SuppressWarnings("null")
     @Override
     public void postHurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
-        pStack.hurtAndBreak(2, pAttacker, EquipmentSlot.MAINHAND);
+        pStack.hurtAndBreak(1, pAttacker, EquipmentSlot.MAINHAND);
     }
 
     /**
@@ -309,5 +312,30 @@ public class AIOTItem extends Item {
     @org.jetbrains.annotations.Nullable
     public static BlockState getShovelPathingState(BlockState originalState) {
         return FLATTENABLES.get(originalState.getBlock());
+    }
+
+    public Tier getTier() {
+        return Tiers.NETHERITE;
+    }
+
+    @Override
+    public int getEnchantmentValue() {
+        return Tiers.NETHERITE.getEnchantmentValue();
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return true;
+    }
+
+    @SuppressWarnings("null")
+    @Override
+    public boolean isValidRepairItem(ItemStack pToRepair, ItemStack pRepair) {
+        return Tiers.NETHERITE.getRepairIngredient().test(pRepair) || super.isValidRepairItem(pToRepair, pRepair);
+    }
+
+    @Override
+    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+        return true;
     }
 }
